@@ -1,0 +1,87 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from numpy import load
+
+## Importing the Numpy Arrays
+#I repeated this process for each array (the other arrays are excluded for brevity)
+
+data0 = load("DsRed2-HeLa_10_26_1.npz")
+lst0 = data0.files
+for item in lst0:
+    if item == "eigen_vals":
+        DsRed2_HeLa_10_26_1 = data0[item]
+
+## Inserting MDIVI eigenvalue arrays into a list 'mdivi_arrays' with a total of 29 arrays 
+
+mdivi_arrays = [DsRed2_HeLa_10_26_1,DsRed2_HeLa_10_26_2,DsRed2_HeLa_10_26_3,DsRed2_HeLa_10_26_4,
+                DsRed2_HeLa_10_26_5,DsRed2_HeLa_10_26_6,DsRed2_HeLa_10_26_7,DsRed2_HeLa_11_21_3,
+                DsRed2_HeLa_11_21_4,DsRed2_HeLa_11_21_5,DsRed2_HeLa_11_21_6,DsRed2_HeLa_11_21_7,
+                DsRed2_HeLa_11_21_9,DsRed2_HeLa_11_21_10,DsRed2_HeLa_11_21_11,DsRed2_HeLa_11_21_12,
+                HeLa_DsRed2_10_13_1,HeLa_DsRed2_10_13_2,HeLa_DsRed2_10_13_3,HeLa_DsRed2_10_13_4,
+                HeLa_DsRed2_10_13_5,HeLa_DsRed2_10_13001_1,HeLa_DsRed2_10_13001_2,
+                HeLa_DsRed2_10_13001_4,HeLa_DsRed2_10_13001_5,HeLa_DsRed2_10_13001_6,HeLa_DsRed2_10_13001_7,
+                HeLa_DsRed2_10_13001_8,HeLa_DsRed2_10_13001_9]
+ 
+ #For each array in `mdivi_arrays' I wish to calculate the variance explained (e[i] / sum(e)) for each timepoint. That is, for each timepoint (row), I will divide each element
+ #(eigenvalue) by the sum of the elements in that row. Performing this on each array results in an array with the same shape. I will store each resulting array in an empty list
+ #named 'variance_array_for_each_eigevalue' (containing 29 0s)
+ 
+ variance_array_for_each_eigenvalue = [0] * len(mdivi_arrays)
+
+
+## Calculating variance explained for each MDIVI array 
+
+for q in range(29):
+    variance_array = (np.empty(shape=(mdivi_arrays[q].shape[0],mdivi_arrays[q].shape[1]), dtype= float)) * 0 #Empty array to store variance explained values
+    for w in range(mdivi_arrays[q].shape[0]):  #The number of rows in the given array 
+        for z in range(mdivi_arrays[q].shape[1]):  #The number of columns in the given array
+            variance_array[w,z] = ((mdivi_arrays[q][w,z])) / np.sum(mdivi_arrays[q][w,]) #Store the variance explained into the designated entry of the variance_array
+    variance_array_for_each_eigenvalue[q] = variance_array #Store this finished array in the list 
+
+
+## Creating the variance explained plots for MDIVI
+
+#Here I am creating a dictionary where the keys are strings of the names of the arrays and the arrays are the objects being returned.
+#The purpose of creating tihs dictionary is so that I can title each plot with the name of the array.
+
+mdivi_arrays_dictionary = {"DsRed2_HeLa_10_26_1":DsRed2_HeLa_10_26_1,"DsRed2_HeLa_10_26_2":DsRed2_HeLa_10_26_2,
+                "DsRed2_HeLa_10_26_3":DsRed2_HeLa_10_26_3,"DsRed2_HeLa_10_26_4":DsRed2_HeLa_10_26_4,
+                "DsRed2_HeLa_10_26_5":DsRed2_HeLa_10_26_5,
+                                      "DsRed2_HeLa_10_26_6":DsRed2_HeLa_10_26_6,
+"DsRed2_HeLa_10_26_7":DsRed2_HeLa_10_26_7,
+"DsRed2_HeLa_11_21_3":DsRed2_HeLa_11_21_3,
+                "DsRed2_HeLa_11_21_4":DsRed2_HeLa_11_21_4,
+                "DsRed2_HeLa_11_21_5":DsRed2_HeLa_11_21_5,
+                "DsRed2_HeLa_11_21_6":DsRed2_HeLa_11_21_6,
+                "DsRed2_HeLa_11_21_7":DsRed2_HeLa_11_21_7,
+                "DsRed2_HeLa_11_21_9":DsRed2_HeLa_11_21_9,
+                "DsRed2_HeLa_11_21_10":DsRed2_HeLa_11_21_10,
+                "DsRed2_HeLa_11_21_11":DsRed2_HeLa_11_21_11,
+                "DsRed2_HeLa_11_21_12":DsRed2_HeLa_11_21_12,
+                "HeLa_DsRed2_10_13_1":HeLa_DsRed2_10_13_1,
+                "HeLa_DsRed2_10_13_2":HeLa_DsRed2_10_13_2,
+                "HeLa_DsRed2_10_13_3":HeLa_DsRed2_10_13_3,
+                "HeLa_DsRed2_10_13_4":HeLa_DsRed2_10_13_4,
+                "HeLa_DsRed2_10_13_5":HeLa_DsRed2_10_13_5,
+                "HeLa_DsRed2_10_13001_1":HeLa_DsRed2_10_13001_1,
+                "HeLa_DsRed2_10_13001_2":HeLa_DsRed2_10_13001_2,
+                "HeLa_DsRed2_10_13001_4":HeLa_DsRed2_10_13001_4,
+                "HeLa_DsRed2_10_13001_5":HeLa_DsRed2_10_13001_5,
+                "HeLa_DsRed2_10_13001_6":HeLa_DsRed2_10_13001_6,
+                "HeLa_DsRed2_10_13001_7":HeLa_DsRed2_10_13001_7,
+                "HeLa_DsRed2_10_13001_8":HeLa_DsRed2_10_13001_8,
+                "HeLa_DsRed2_10_13001_9":HeLa_DsRed2_10_13001_9}
+ 
+ 
+ #Here I extract the keys from the dictionary and store them in a list named 'key_list'
+ key_list=list(mdivi_arrays_dictionary.keys())
+
+pltlist = [0] * 29 #empty list to store the plt.plots
+
+for z in range(29):
+    pltlist[z] = plt.plot(range(variance_array_for_each_eigenvalue[z].shape[0]), variance_array_for_each_eigenvalue[z][:,:]) #Graphs var. expl. of each eigenval per timepoint
+    plt.xlabel("Time Point")
+    plt.ylabel("Variance Explained")
+    plt.title("Variance Explained Per Timepoint for " + key_list[z]) #Titling each plot using the name of the array
+    plt.show() #Outputs 29 graphs individually
+    
