@@ -79,9 +79,11 @@ control_arrays_dictionary = {"DsRed2_HeLa_10_26_1":DsRed2_HeLa_10_26_1,"DsRed2_H
 
 pltlist = [0] * 29 #empty list to store the plt.plots
 
+figure(figsize=(100, 600), dpi=80)
 for z in range(29):
-    pltlist[z] = plt.plot(range(variance_array_for_each_eigenvalue[z].shape[0]), variance_array_for_each_eigenvalue[z][:,:]) #Graphs var. expl. of each eigenval per timepoint
-    plt.xlabel("Time Point")
-    plt.ylabel("Explained Variance")
-    plt.title("Control Explained Variance Per Timepoint for " + key_list[z]) #Titling each plot using the name of the array
-    plt.show() #Outputs 29 graphs individually
+   pltlist[z] = plt.plot(range(variance_array_for_each_eigenvalue[z].shape[0]), variance_array_for_each_eigenvalue[z][:,:]) #Graphs var. expl. of each eigenval per timepoint
+   plt.xlabel("Time Point")
+   plt.ylabel("Explained Variance")
+   plt.title("Control Explained Variance Per Timepoint for " + key_list[z]) #Titling each plot using the name of the array
+   plt.savefig(fname=str(key_list[z] + ".jpg")) #Automatically saving each plot and making the filename the name of the array
+   plt.show() #Outputs 29 graphs individually
