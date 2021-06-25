@@ -19,7 +19,7 @@ mdivi_names = ["Mdivi1_7_14_1.npz", "Mdivi1_7_14_2.npz", "Mdivi1_7_14_2_1.npz", 
                "Mdivi1_7_28_2.npz", "Mdivi1_7_28_2_1.npz", "Mdivi1_7_28_2_2.npz", "Mdivi1_7_28_2_3.npz",
                "Mdivi1_7_28_2_4.npz", "Mdivi1_7_28_3_1.npz", "Mdivi1_7_28_3_2.npz"]
 
-# Within 'mdivi_list,' I will store the 66 eigenvalue arrays.
+# Within 'mdivi_list,' I will store the 31 eigenvalue arrays.
 
 mdivi_list = [0] * len(mdivi_names)
 
