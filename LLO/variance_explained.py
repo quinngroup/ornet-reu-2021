@@ -56,8 +56,6 @@ for q in range(66):
 
 pltlist_llo = [0] * len(llo_list)
 
-figure(figsize=(100, 600), dpi=80)
-
 for z in range(66):
     pltlist_llo[z] = plt.plot(range(variance_array_for_each_eigenvalue_llo[z].shape[0]), variance_array_for_each_eigenvalue_llo[z][:,:])
     plt.xlabel("Time Point")
