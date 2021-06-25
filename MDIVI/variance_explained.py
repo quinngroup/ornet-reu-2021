@@ -23,7 +23,7 @@ mdivi_names = ["Mdivi1_7_14_1.npz", "Mdivi1_7_14_2.npz", "Mdivi1_7_14_2_1.npz", 
 
 mdivi_list = [0] * len(mdivi_names)
 
-# Importing arrays: Please see this importing process in ornet-reu-2021/LLO/variance_explained.py
+# Importing arrays: Please see this importing process in ornet-reu-2021/Control/variance_explained.py
 
 for i in range(31):
     data = load(mdivi_names[i])
@@ -35,7 +35,7 @@ for i in range(31):
 
 ## Calculating Explained Variance for each MDIVI array
 
-# Here I use the same process I used for the control data. Please see ornet-reu-2021/Control/Explained Variance for Control
+# Here I use the same process I used for the control data. Please see ornet-reu-2021/Control/variance_explained.py
 
 variance_array_for_each_eigenvalue_mdivi = [0] * len(mdivi_list)
 
@@ -47,7 +47,7 @@ for q in range(31):
     variance_array_for_each_eigenvalue_mdivi[q] = variance_array_mdivi
 
 ## Creating the Explained Variance Plots for MDIVI
-# Once more I use the same plotting process I used for the control data. Please see ornet-reu-2021/Control/Explained Variance for Control
+# Once more I use the same plotting process I used for the control data. Please see ornet-reu-2021/Control/variance_explained.py
 
 pltlist_mdivi = [0] * len(mdivi_list)
 
@@ -59,5 +59,5 @@ for z in range(31):
     plt.xlabel("Time Point")
     plt.ylabel("Explained Variance")
     plt.title("MDIVI Explained Variance Per Timepoint for " + mdivi_names[z])
-    plt.savefig(fname=str(mdivi_names[z] + ".jpg"))  # Automatically saves plot as file
+    plt.savefig(fname=str(mdivi_names[z] + ".jpg"))  # Automatically saves plot as file in working directory
     plt.show()
