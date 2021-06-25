@@ -39,7 +39,7 @@ for i in range(66):
 
 ## Calculating Explained Variance for each LLO array
 
-#Here I use the same process I used for the control data. Please see ornet-reu-2021/Control/Explained Variance for Control
+#Here I use the same process I used for the control data. Please see ornet-reu-2021/Control/variance_explained.py
 
 variance_array_for_each_eigenvalue_llo = [0] * len(llo_list)
 
@@ -52,7 +52,7 @@ for q in range(66):
 
 
 ## Creating the Explained Variance Plots for LLO
-#Once more I use the same plotting process I used for the control data. Please see ornet-reu-2021/Control/Explained Variance for Control
+#Once more I use the same plotting process I used for the control data. Please see ornet-reu-2021/Control/variance_explained.py
 
 pltlist_llo = [0] * len(llo_list)
 
