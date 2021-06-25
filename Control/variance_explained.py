@@ -48,7 +48,6 @@ for q in range(66):
 
 pltlist_control = [0] * len(control_list)
 
-figure(figsize=(100, 600), dpi=80)
 
 for z in range(66):
    pltlist_control[z] = plt.plot(range(variance_array_for_each_eigenvalue_control[z].shape[0]), variance_array_for_each_eigenvalue_control[z][:,:])
