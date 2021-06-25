@@ -1,0 +1,6 @@
+#Within the MDIVI/Temporal Anomaly Detection repository, there will be two different folders consisting of sub-folders that consist of figures (comprised of a time-series plot of 
+the eigenvalue vectors and an outlier detection signals plot) that correspond to each NumPy array in the MDIVI experimental group and were generated with different 'window,'and
+'threshold' values.
+
+These two folders will be titled "threshold = 2.0" and "threshold = 2.5," as I experimented with these two threshold values. Within each folder, I experiment with different
+window sizes (15,20,50,80,etc) and there will be different sub-folders titled with the corresponding window. 
