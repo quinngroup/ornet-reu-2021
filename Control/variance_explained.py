@@ -55,5 +55,5 @@ for z in range(66):
    plt.xlabel("Time Point")
    plt.ylabel("Explained Variance")
    plt.title("Explained Variance Per Timepoint for " + control_names[z])
-   plt.savefig(fname= str(control_names[z] + ".jpg"))
+   plt.savefig(fname= str(control_names[z] + ".jpg")) # Automatically saves plot as file in working directory
    plt.show()
