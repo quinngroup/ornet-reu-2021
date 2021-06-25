@@ -23,7 +23,7 @@ mdivi_names = ["Mdivi1_7_14_1.npz", "Mdivi1_7_14_2.npz", "Mdivi1_7_14_2_1.npz", 
 
 mdivi_list = [0] * len(mdivi_names)
 
-# Importing arrays: Please see this importing process in ornet-reu-2021/LLO/Explained Variance for LLO
+# Importing arrays: Please see this importing process in ornet-reu-2021/LLO/variance_explained.py
 
 for i in range(31):
     data = load(mdivi_names[i])
