@@ -37,10 +37,10 @@ for i in range(29):
 variance_array_for_each_eigenvalue_control = [0] * len(control_list)
 
 for q in range(66):
-   variance_array_control = (np.empty(shape=(control_list[q].shape[0],control_list[q].shape[1]), dtype= float)) * 0
+   variance_array_control = (np.empty(shape=(control_list[q].shape[0],control_list[q].shape[1]), dtype= float)) * 0 #Creates an empty array with the same dimensions as the selected array
    for w in range(control_list[q].shape[0]):
        for z in range(control_list[q].shape[1]):
-           variance_array_control[w,z] = ((control_list[q][w,z])) / np.sum(control_list[q][w,])
+           variance_array_control[w,z] = ((control_list[q][w,z])) / np.sum(control_list[q][w,]) #Divide the specified eigenvalue at the specified timepoint by the sum of the of all the eigenvalues for that timepoint (row)
    variance_array_for_each_eigenvalue_control[q] = variance_array_control
 
 
