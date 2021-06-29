@@ -8,6 +8,5 @@ variance calculations.
 
 Explained variance is calculated by taking the sum of the eigenvalues in each row and dividing each eigenvalue by that sum. Then, the explained variance from each eigenvalue per time-point/frame
 is plotted. Below is a crude image illustrating the how the calculation is carried out. 
-
 ![](Images/Screenshot%20(172).png)
 
