@@ -8,6 +8,7 @@ import sys
 import argparse
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.ticker as mtick
 from tqdm import tqdm
 import seaborn as sns
 from numpy import load
@@ -126,6 +127,7 @@ def explained_variance(experimental_group, file_names):
        ax.plot(explained_variance_array[:, :]) #Plotting the explained variance
        ax.set_xlabel('Frame')
        ax.set_ylabel('Explained Variance')
+       ax.yaxis.set_major_formatter(mtick.PercentFormatter())  
 
        plt.show()
 
