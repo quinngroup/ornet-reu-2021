@@ -83,7 +83,7 @@ for i in range(31):
            data_file = data[item]
    mdivi_list[i] = data_file
 
-## Temporal Anomaly Detection ##
+### Temporal Anomaly Detection ###
 
 #Lists containing the numpy arrays
 llo_list # 66 arrays
