@@ -127,7 +127,7 @@ def explained_variance(experimental_group, file_names):
        ax.plot(explained_variance_array[:, :]) #Plotting the explained variance
        ax.set_xlabel('Frame')
        ax.set_ylabel('Explained Variance')
-       ax.yaxis.set_major_formatter(mtick.PercentFormatter())  
+       ax.yaxis.set_major_formatter(mtick.PercentFormatter()) #Formatting y-axis of explained variance sub-plot to consist of percentages
 
        plt.show()
 
