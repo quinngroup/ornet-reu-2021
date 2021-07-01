@@ -6,7 +6,7 @@ in each Eigenvalue NumPy array from the OrNet Eigenspectrum data.
 Each Eigenvalue NumPy array's rows correspond to time-points/frames and columns correspond to eigenvalues. Only the first 10 leading eigenvalues are being considered in the explained
 variance calculations. 
 
-Explained variance is calculated by taking the sum of the eigenvalues in each row and dividing each eigenvalue by that sum. Then, the explained variance from each eigenvalue per time-point/frame is plotted. Below is a crude image illustrating the how the calculation is carried out. 
+Explained variance is calculated by taking the sum of the eigenvalues in each row and dividing each eigenvalue by that sum. Then, the explained variance from each eigenvalue per time-point/frame is plotted. Below is an image illustrating the how the calculation is performed. 
 
-![](Images/Screenshot%20(172).png)
+![](https://github.com/quinngroup/ornet-reu-2021/blob/main/Images/expvariancediagram.png)
 
