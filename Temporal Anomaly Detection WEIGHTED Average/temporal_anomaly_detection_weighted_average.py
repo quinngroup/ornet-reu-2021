@@ -76,7 +76,7 @@ def temporal_anomaly_detection_weighted_average(eigen_vals, window, k, threshold
         moving_avgs[i] = np.mean(eigen_vals_weighted_avgs[i - window:i])
         moving_stds[i] = np.std(eigen_vals_weighted_avgs[i - window:i])
         z_scores[i] = (eigen_vals_weighted_avgs[i] - moving_avgs[i]) / moving_stds[i]
-        plot_title = file_name + ' Signals Plot'
+        plot_title = file_name + ' Weighted Avg. Signals Plot ' + 'Window ~ ' + str(window)  + ' Threshold ~ ' + str(threshold)
         for i, score in enumerate(z_scores):
             if score > threshold:
                 signals[i] = 1
