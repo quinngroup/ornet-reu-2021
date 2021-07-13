@@ -1,4 +1,4 @@
-# Temporal Anomaly Detection with WEIGHTED Average
+# WEIGHTED Average Temporal Anomaly Detection
 
 This folder contains the script for temporal anomaly detection using the **weighted average eigenvalue per frame.** 
 
