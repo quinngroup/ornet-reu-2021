@@ -57,7 +57,6 @@ def plot(eigen_values, z_scores, title):
     plt.savefig(fname=str(title + ".jpg"), dpi=100)
     plt.show()
 
-
 def temporal_anomaly_detection_weighted_average(eigen_vals, window, k, threshold,file_name):
     number_of_rows = eigen_vals.shape[0]
     number_of_columns = eigen_vals.shape[1]
@@ -72,12 +71,12 @@ def temporal_anomaly_detection_weighted_average(eigen_vals, window, k, threshold
     moving_avgs = np.empty(shape=(number_of_rows,), dtype=float) * 0
     moving_stds = np.empty(shape=(number_of_rows,), dtype=float) * 0
     z_scores = np.empty(shape=(number_of_rows,), dtype=float) * 0
-    signals = np.empty(shape=(number_of_rows,), dtype=float) * 0
+    signals = np.empty(shape=(number_of_rows[0],), dtype=float) * 0
     for i in range(window, moving_avgs.shape[0]):
         moving_avgs[i] = np.mean(eigen_vals_weighted_avgs[i - window:i])
         moving_stds[i] = np.std(eigen_vals_weighted_avgs[i - window:i])
         z_scores[i] = (eigen_vals_weighted_avgs[i] - moving_avgs[i]) / moving_stds[i]
-        plot_title = file_name + ' Weighted Avg. Signals Plot ' + "Window ~ " + str(window)  + " Threshold ~ " + str(threshold)
+        plot_title = file_name + ' Weighted Avg. Signals Plot ' + 'Window ~ ' + str(window)  + ' Threshold ~ ' + str(threshold)
         for i, score in enumerate(z_scores):
             if score > threshold:
                 signals[i] = 1
@@ -92,94 +91,8 @@ for item in your_directory:
         data = np.load(item)
         path = data["eigen_vals"]
         file_name = item.split(".")[0]
+        print(file_name)
         temporal_anomaly_detection_weighted_average(eigen_vals= path, window = 20, k = 10, threshold= 2.0, file_name= file_name)
-
-# llo_list = []
-# mdivi_list = []
-# control_list = []
-#
-# for item in your_directory:
-#     if ".npz" and "LLO" in item:
-#         data = np.load(item)
-#         eigen_vals = data["eigen_vals"]
-#         llo_list.append(eigen_vals)
-#     elif ".npz" and "Mdivi" in item:
-#         data = np.load(item)
-#         eigen_vals = data["eigen_vals"]
-#         mdivi_list.append(eigen_vals)
-#     elif ".npz" in item:
-#         data = np.load(item)
-#         eigen_vals = data["eigen_vals"]
-#         control_list.append(eigen_vals)
-#
-# experimental_groups = [llo_list,mdivi_list,control_list]
-# llo_proportions = [0] * 66
-# mdivi_proportions = [0] * 31
-# control_proportions = [0] * 29
-#
-# ultimate_list = [llo_proportions,mdivi_proportions,control_proportions]
-# # for j in range(3):
-# #    window = 50
-# #    threshold = 2.0
-# #    sub_list = experimental_groups[j]
-# #    for f in range(len(sub_list)):
-# #        eigen_vals = sub_list[f]
-# #        eigen_vals_avgs = [np.mean(x) for x in eigen_vals]
-# #        moving_avgs = np.empty(shape=(eigen_vals.shape[0],), dtype=float) * 0
-# #        moving_stds = np.empty(shape=(eigen_vals.shape[0],), dtype=float) * 0
-# #        z_scores = np.empty(shape=(eigen_vals.shape[0],), dtype=float) * 0
-# #        signals = np.empty(shape=(eigen_vals.shape[0],), dtype=float) * 0
-# #        for i in range(window, moving_avgs.shape[0]):
-# #            moving_avgs[i] = np.mean(eigen_vals_avgs[i - window:i])
-# #            moving_stds[i] = np.std(eigen_vals_avgs[i - window:i])
-# #            z_scores[i] = (eigen_vals_avgs[i] - moving_avgs[i]) / moving_stds[i]
-# #            for i, score in enumerate(z_scores):
-# #                if score > threshold:
-# #                    signals[i] = 1
-# #                elif score < threshold * -1:
-# #                    signals[i] = -1
-# #                else:
-# #                    signals[i] = 0
-# #                prop_of_anomaly_detections = np.sum(abs(signals)) / sub_list[f].shape[0]
-# #                ultimate_list[j][f] = prop_of_anomaly_detections
-#
-#
-# for j in range(3):
-#    window = 10
-#    threshold = 2.0
-#    sub_list = experimental_groups[j]
-#    for f in range(len(sub_list)):
-#        eigen_vals = sub_list[f]
-#        number_of_rows = eigen_vals.shape[0]
-#        number_of_columns = eigen_vals.shape[1]
-#        weights_array = np.empty(shape=(number_of_rows, number_of_columns)) * 0
-#        eigen_vals_weighted_avgs = np.empty(shape=(number_of_rows))
-#        for row in range(number_of_rows):
-#            for column in range(number_of_columns):
-#                array_entry = eigen_vals[row, column]
-#                sum_of_row = np.sum(eigen_vals[row,])
-#                weights_array[row, column] = array_entry * (array_entry / sum_of_row)
-#                eigen_vals_weighted_avgs[row] = np.sum(weights_array[row,])
-#        moving_avgs = np.empty(shape=(eigen_vals.shape[0],), dtype=float) * 0
-#        moving_stds = np.empty(shape=(eigen_vals.shape[0],), dtype=float) * 0
-#        z_scores = np.empty(shape=(eigen_vals.shape[0],), dtype=float) * 0
-#        signals = np.empty(shape=(eigen_vals.shape[0],), dtype=float) * 0
-#        for i in range(window, moving_avgs.shape[0]):
-#            moving_avgs[i] = np.mean(eigen_vals_weighted_avgs[i - window:i])
-#            moving_stds[i] = np.std(eigen_vals_weighted_avgs[i - window:i])
-#            z_scores[i] = (eigen_vals_weighted_avgs[i] - moving_avgs[i]) / moving_stds[i]
-#            for i, score in enumerate(z_scores):
-#                if score > threshold:
-#                    signals[i] = 1
-#                elif score < threshold * -1:
-#                    signals[i] = -1
-#                else:
-#                    signals[i] = 0
-#                prop_of_anomaly_detections = np.sum(abs(signals)) / sub_list[f].shape[0]
-#                ultimate_list[j][f] = prop_of_anomaly_detections
-#
-# for x in ultimate_list:
-#     print(np.std(x))
 
 
 
