@@ -60,8 +60,8 @@ def plot(eigen_values, z_scores, title):
 def temporal_anomaly_detection_weighted_average(eigen_vals, window, k, threshold,file_name):
     number_of_rows = eigen_vals.shape[0]
     number_of_columns = eigen_vals.shape[1]
-    weights_array = np.empty(shape = (number_of_rows,number_of_columns)) * 0
-    eigen_vals_weighted_avgs = np.empty(shape = (number_of_rows))
+    weights_array = np.empty(shape = (number_of_rows,number_of_columns),dtype = float) * 0
+    eigen_vals_weighted_avgs = np.empty(shape = (number_of_rows), dtype = float) * 0
     for row in range(number_of_rows):
         for column in range(number_of_columns):
             array_entry = eigen_vals[row,column]
