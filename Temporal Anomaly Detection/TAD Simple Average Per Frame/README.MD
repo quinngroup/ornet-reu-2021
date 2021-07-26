@@ -1,5 +1,5 @@
 # Original Temporal Anomaly Detection (Utilizing Simple Average Eigenvalue Per Frame)
-Within the "TAD Simple Average Per Frame" repository, I have included my code for the temporal anomaly detection, a *readaptation* of Marcus' original code. 
+Within the "TAD Simple Average Per Frame" folder, I have included my code for the temporal anomaly detection, a *readaptation* of Marcus' original code. 
 
 My code differs in that some arguments are left out from Marcus' code but this script should still be easily ran by anybody. 
 
