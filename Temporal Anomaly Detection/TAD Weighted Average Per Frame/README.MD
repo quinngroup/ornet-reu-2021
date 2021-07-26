@@ -5,6 +5,6 @@ Within the "TAD Weighted Average Per Frame" folder, I have included my code for 
 For each row/frame, in each eigenvals NumPy array, each entry is multiplied by a weight (entry/divided by the sum of the row entries) and then each product in that row is summed to
 calculate the weighted average per frame. 
 
-An image that clearly illustrates this process will be uploaded soon.
+![](https://github.com/quinngroup/ornet-reu-2021/blob/main/Images/TAD%20Weighted%20Average%20Illustration.jpg)
 
 My code file is titled, "temporal_anomaly_detection_weighted_average.py" This is the code I use to create the temporal anomaly detection plots for the eigenvalue NumPy arrays in each experimental group.
