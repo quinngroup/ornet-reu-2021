@@ -1,7 +1,7 @@
 # Temporal Anomaly Detection
 
-Within the "Temporal Anomaly Detection" repository, I have included my code for temporal anomaly detection, a *readaptation* of Marcus' original code. My code differs in that some arguments are left out from Marcus' code but this script should still be easily ran by anybody. 
+Within the "Temporal Anomaly Detection" repository, there are three folders. 
 
-**NOTE:** Within the temporal anomaly detection code, we are only considering the simple average per frame. 
+Two folders contain the code for both versions of the Temporal Anomaly Detection, that is, the TAD using the simple average eigenvalue per frame (original model) and the TAD using the weighted average eigenvalue per frame.
 
-My code file is titled, "temporal_anomaly_detection_code.py." This is the code I use to create the temporal anomaly detection plots for the eigenvalue NumPy arrays in each experimental group. 
+The last folder titled, **"Comparing TAD Versions,"** consists of code, tests, and plots that compare the two versions/models and the resultant raw data from those comparisons. 
