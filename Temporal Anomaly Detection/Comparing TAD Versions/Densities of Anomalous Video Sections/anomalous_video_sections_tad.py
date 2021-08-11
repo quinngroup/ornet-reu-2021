@@ -58,6 +58,8 @@ for item in your_directory:
 
 eigenvals_list = [llo_list,mdivi_list,control_list]
 
+
+
 def frequencies_of_anomalous_video_sections(eigenvals_list, tad_version, window, threshold,bins, density):
     '''
         Generates a figure comprised of three histogram sub-plots.
@@ -66,7 +68,6 @@ def frequencies_of_anomalous_video_sections(eigenvals_list, tad_version, window,
         by implementing one of the two TAD versions and different window and
         threshold parameter values, plots the density of anomalous sections from
         all videos within that mitochondrial condition.
-
         Parameters
         ----------
         eigenvals_list: list
@@ -121,6 +122,8 @@ def frequencies_of_anomalous_video_sections(eigenvals_list, tad_version, window,
                         else:
                             signals[i] = 0
                 signals_list.append(signals)
+
+
     elif tad_version == "Weighted Average":
         for i in range(len(eigenvals_list)):
             sub_list = eigenvals_list[i]
@@ -152,27 +155,32 @@ def frequencies_of_anomalous_video_sections(eigenvals_list, tad_version, window,
                         else:
                             signals[i] = 0
                 signals_list.append((signals))
+
+
     anomalous_sections_of_video_llo = []
-    for l in range(66):
+    for l in range(len(llo_list)):
         for count, value in enumerate(signals_list[l]):
             if (value == 1):
                 anomalous_sections_of_video_llo.append(count / len(signals_list[l]))
             elif (value == -1):
                 anomalous_sections_of_video_llo.append(count / len(signals_list[l]))
+
     anomalous_sections_of_video_mdivi = []
-    for m in range(67, 96):
+    for m in range(len(llo_list), len(llo_list) + len(mdivi_list)):
         for count, value in enumerate(signals_list[m]):
             if (value == 1):
                 anomalous_sections_of_video_mdivi.append(count / len(signals_list[m]))
             elif (value == -1):
                 anomalous_sections_of_video_mdivi.append(count / len(signals_list[m]))
+
     anomalous_sections_of_video_control = []
-    for c in range(97, 126):
+    for c in range(len(llo_list) + len(mdivi_list), len(llo_list) + len(mdivi_list) + len(control_list)):
         for count, value in enumerate(signals_list[c]):
             if (value == 1):
                 anomalous_sections_of_video_control.append(count / len(signals_list[c]))
             elif (value == -1):
                 anomalous_sections_of_video_control.append(count / len(signals_list[c]))
+
     gs = gridspec.GridSpec(2, 2)
     fig = pl.figure()
     fig.suptitle("Density of Anomalous Video Sections " + str(tad_version) + " \nWindow = " + str(window) +  " Threshold = " + str(threshold))
@@ -194,16 +202,15 @@ def frequencies_of_anomalous_video_sections(eigenvals_list, tad_version, window,
 
     figure = plt.gcf()
     figure.set_size_inches(8, 6)
-    plt.savefig(fname="FrequenciesHist" + str(tad_version) + "W" + str(window) + "T" + str(threshold) + ".jpg", dpi=100)
+    #plt.savefig(fname="DensitiesHist" + str(tad_version) + "W" + str(window) + "T" + str(threshold) + ".jpg", dpi=100)
     plt.show()
 
 for window in [10,20,50]:
     for threshold in [2.0,2.5,3.0]:
         frequencies_of_anomalous_video_sections(eigenvals_list= eigenvals_list, tad_version= "Simple Average",
-                                                window = window, threshold= threshold, bins = 10, density = True)
+                                                window = window, threshold= threshold, bins = 8, density = True)
         frequencies_of_anomalous_video_sections(eigenvals_list=eigenvals_list, tad_version="Weighted Average", window= window,
-                                            threshold=threshold, bins=10, density=True)
-
+                                            threshold=threshold, bins= 8, density= True)
 
 
 
