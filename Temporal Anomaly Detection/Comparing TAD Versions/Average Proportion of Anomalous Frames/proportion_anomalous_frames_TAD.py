@@ -83,9 +83,9 @@ def average_proportion_of_anomalous_frames(eigenvals_list, tad_version, window, 
             is anomalous.
     '''
     experimental_groups = len(eigenvals_list)
-    llo_props = [0] * 66
-    mdivi_props = [0] * 31
-    control_props = [0] * 29
+    llo_props = [0] * len(llo_list)
+    mdivi_props = [0] * len(mdivi_list)
+    control_props = [0] * len(control_list)
     proportions_list = [llo_props,mdivi_props,control_props]
 
     if tad_version == "Weighted Average":
@@ -196,3 +196,6 @@ def average_proportion_of_anomalous_frames(eigenvals_list, tad_version, window, 
 
 
 average_proportion_of_anomalous_frames(eigenvals_list = eigenvals_list, tad_version= "Simple Average",window = 20, threshold = 2.0)
+average_proportion_of_anomalous_frames(eigenvals_list = eigenvals_list, tad_version= "Weighted Average",window = 20, threshold = 2.0)
+
+
