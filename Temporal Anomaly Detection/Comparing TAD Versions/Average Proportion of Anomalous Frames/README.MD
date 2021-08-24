@@ -1,8 +1,5 @@
 # Average Proportion of Anomalous Frames for Each Video in Each Mitochondrial Condition
-### One of the Two Methods Comparing TAD Simple Average to TAD Weighted Average
-
-In creating the new temporal anomaly detection code utilizing the weighted average eigenvalue per frame, I sought to compare this new model to the original temporal anomaly 
-detection code that utilizes the simple average eigenvalue per frame. 
+### One of the Two Methods in Comparing TAD Simple Average to TAD Weighted Average
 
 For each TAD code (simple average, weighted average), I calculated the average proportion of frames declared anomalous from each NumPy array for each experimental group among different
 window sizes and thresholds. 
